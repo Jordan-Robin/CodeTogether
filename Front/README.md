@@ -1,68 +1,107 @@
-# CoderEnsemble
+# CodeTogether - Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Application Vue.js 3 avec TypeScript et Vite.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## 🚀 Installation
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## 📋 Commandes disponibles
+
+### Développement
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+L'application sera accessible sur `http://localhost:5173`
+
+### Production
 
 ```sh
 npm run build
+npm run preview
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+### Tests
 
 ```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
+# Tests de composants (headless)
+npm run test:unit
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+# Tests de composants (avec interface)
+npm run test:unit:dev
 
-```sh
+# Tests E2E (headless)
+npm run test:e2e
+
+# Tests E2E (avec interface)
 npm run test:e2e:dev
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+### Qualité de code
 
 ```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
+# Linting
 npm run lint
+
+# Vérification TypeScript
+npm run type-check
 ```
+
+## 🗂️ Structure du projet
+
+```
+Front/
+├── cypress/           # Tests Cypress (E2E et composants)
+├── public/            # Assets statiques
+└── src/
+    ├── assets/
+    │   └── styles/    # SCSS global et helpers
+    ├── components/
+    │   ├── form/      # Composants de formulaire
+    │   ├── loader/    # Loaders
+    │   ├── structure/ # Layout (Header, Submenu)
+    │   └── svg/       # Icônes et logos SVG
+    ├── entities/      # Types TypeScript
+    ├── helpers/       # Utilitaires
+    ├── router/        # Configuration Vue Router
+    └── views/         # Pages de l'application
+```
+
+## 🎨 Système de design
+
+### Couleurs (définies dans `main.scss`)
+
+| Variable     | Couleur   | Usage              |
+| ------------ | --------- | ------------------ |
+| `$primary`   | `#58b9ff` | Couleur principale |
+| `$secondary` | `#ffbf1d` | Couleur secondaire |
+| `$light`     | `#fefefe` | Texte clair        |
+| `$dark`      | `#1c1b20` | Fond sombre        |
+
+### Classes utilitaires
+
+- **Display** : `.f`, `.f-col`, `.a-cent`, `.j-betw`
+- **Spacing** : `.mb-32`, `.ml-16`, `.p-32-64`
+- **Background** : `.bg-dark`, `.bg-primary`, `.br-50`
+
+## 📄 Pages
+
+| Route         | Composant      | Description        |
+| ------------- | -------------- | ------------------ |
+| `/`           | `HomeView`     | Page d'accueil     |
+| `/login`      | `LoginView`    | Connexion          |
+| `/register`   | `RegisterView` | Inscription        |
+| `/my-profile` | `MyProfile`    | Profil utilisateur |
+
+## 🔧 Configuration IDE
+
+Recommandé : [VSCode](https://code.visualstudio.com/) avec :
+
+- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+- [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
+
+> ⚠️ Désactiver Vetur si installé
